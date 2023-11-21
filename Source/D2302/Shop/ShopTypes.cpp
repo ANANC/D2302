@@ -58,6 +58,18 @@ void UBaseShop::RemoveProp(FName propName,int number)
 	ShopPropNumberUpdateDelegate.Broadcast(ShopName,propName,shopProp->CurNumber,shopProp->Price);
 }
 
+bool UBaseShop::SellPropCost(FName propName,int number,int& cost)
+{
+	UBaseShopProp* shopProp = GetShopProp(propName);
+	if(!shopProp)
+	{
+		return false;
+	}
+
+	cost = shopProp->Price * number;
+	return true;
+}
+
 bool UBaseShop::SellProp(FName propName,int number)
 {
 	UBaseShopProp* shopProp = GetShopProp(propName);

@@ -42,4 +42,14 @@ protected:
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	UWorkmanshipComponent* WorkmanshipComponent;
+
+public:
+	
+	UGameAbilitySystemComponent* GetAbilitySystemComponent();
+	
+	UBackpackComponent* GetBackpackComponent();
+
+	UShopComponent* GetShopComponent();
+
+	UWorkmanshipComponent* GetWorkmanshipComponent();
 };

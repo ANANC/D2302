@@ -4,6 +4,9 @@
 #include "ShopComponent.h"
 
 #include "ShopInstanceSubsystem.h"
+#include "D2302/Ability/GameAbilitySystemComponent.h"
+#include "D2302/Ability/AttributeSet/TradeAttributeSet.h"
+#include "D2302/Character/GameBaseCharacter.h"
 #include "D2302/Common/GameCommonFunctionLibrary.h"
 
 
@@ -20,6 +23,8 @@ void UShopComponent::BeginPlay()
 	Super::BeginPlay();
 
 	ShopInstanceSubsystem = UGameCommonFunctionLibrary::GetShopInstanceSubsystem();
+
+	Character = Cast<UGameBaseCharacter>(GetOwner());
 	
 	LoadConfigShop();
 }
@@ -53,9 +58,14 @@ bool UShopComponent::BuyOtherShopProp(FName shopName,FName propNumber,int number
 		return false;
 	}
 
-	if(shop->SellProp(propNumber,number))
+	int cost;
+	if(shop->SellPropCost(propNumber,number,cost))
 	{
-		
+		int curMoney = Character->GetAbilitySystemComponent()->GetNumericAttribute(UTradeAttributeSet::GetMoneyAttribute());
+		if(curMoney >= cost)
+		{
+			
+		}
 		return true;
 	}
 

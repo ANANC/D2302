@@ -18,3 +18,12 @@ UGameBaseCharacter::UGameBaseCharacter(const FObjectInitializer& ObjectInitializ
 
 	
 }
+
+UGameAbilitySystemComponent* UGameBaseCharacter::GetAbilitySystemComponent(){return AbilitySystemComponent;}
+	
+UBackpackComponent* UGameBaseCharacter::GetBackpackComponent(){return BackpackComponent;}
+
+UShopComponent* UGameBaseCharacter::GetShopComponent(){return ShopComponent;}
+
+UWorkmanshipComponent* UGameBaseCharacter::GetWorkmanshipComponent(){return WorkmanshipComponent;}
+

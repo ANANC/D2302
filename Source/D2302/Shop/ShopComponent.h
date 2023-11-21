@@ -25,6 +25,9 @@ protected:
 	class UShopInstanceSubsystem* ShopInstanceSubsystem;
 
 	UPROPERTY()
+	class UGameBaseCharacter* Character;
+	
+	UPROPERTY()
 	TArray<class UBaseShop*> Shops;
 	
 protected:

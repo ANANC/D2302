@@ -4,18 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "GameplayAbility.h"
+#include "Abilities/GameplayAbility.h"
 #include "GameBaseAbility.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class  UGameBaseAbility : public UGameplayAbility
+class UGameBaseAbility : public UGameplayAbility
 {
 	GENERATED_BODY()
 
 	friend class UGameAbilitySystemComponent;
 
-	
+public:
+	UPROPERTY(BlueprintReadOnly)
+	class UGameBaseCharacter* Character;
 };

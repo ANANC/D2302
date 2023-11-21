@@ -101,6 +101,9 @@ public:
 
 	void RemoveProp(FName propName,int number);
 
+	UFUNCTION(BlueprintPure)
+	bool SellPropCost(FName propName,int number,int& cost);
+	
 	bool SellProp(FName propName,int number);
 
 	int GetPropNumber(FName propName);
