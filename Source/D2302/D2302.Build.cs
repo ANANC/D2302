@@ -11,6 +11,8 @@ public class D2302 : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "EnhancedInput" });
 		
 		PublicDependencyModuleNames.AddRange(new string[] { "GameplayAbilities","GameplayTags","GameplayTasks" });
+		
+		PublicDependencyModuleNames.AddRange(new string[] { "ModularGameplayActors" });
 
 	}
 }

@@ -58,20 +58,36 @@ void UBaseShop::RemoveProp(FName propName,int number)
 	ShopPropNumberUpdateDelegate.Broadcast(ShopName,propName,shopProp->CurNumber,shopProp->Price);
 }
 
-void UBaseShop::SellProp(FName propName,int number)
+bool UBaseShop::SellProp(FName propName,int number)
 {
 	UBaseShopProp* shopProp = GetShopProp(propName);
 	if(!shopProp)
 	{
-		return;
+		return false;
 	}
-	int sellNumber = shopProp->CurNumber>=number?number:shopProp->CurNumber;
-	shopProp->CurNumber-=sellNumber;
+
+	if(shopProp->CurNumber < number)
+	{
+		return false;
+	}
+
+	shopProp->CurNumber-=number;
 
 	ShopPropNumberUpdateDelegate.Broadcast(ShopName,propName,shopProp->CurNumber,shopProp->Price);
 
-	int sellPrice = shopProp->Price * sellNumber;
+	int sellPrice = shopProp->Price * number;
 	ShopSellPropDelegate.Broadcast(ShopName,propName,shopProp->CurNumber,sellPrice);
+}
+
+int UBaseShop::GetPropNumber(FName propName)
+{
+	UBaseShopProp* shopProp = GetShopProp(propName);
+	if(!shopProp)
+	{
+		return 0;
+	}
+
+	return shopProp->CurNumber;
 }
 
 UBaseShopProp* UBaseShop::GetShopProp(FName propName)

@@ -38,7 +38,9 @@ struct FShopTableConfigData : public FTableRowBase
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FName TitleName;
-	
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	int DefaultGrade;
 };
 
 
@@ -86,6 +88,8 @@ protected:
 	UPROPERTY()
 	TArray<UBaseShopProp*> ShopProps;
 
+	int Grade;
+
 public:
 	void SetShopName(FName shopName);
 
@@ -97,7 +101,9 @@ public:
 
 	void RemoveProp(FName propName,int number);
 
-	void SellProp(FName propName,int number);
+	bool SellProp(FName propName,int number);
+
+	int GetPropNumber(FName propName);
 
 protected:
 	UBaseShopProp* GetShopProp(FName propName);

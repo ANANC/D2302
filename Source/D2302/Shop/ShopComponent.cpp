@@ -39,3 +39,30 @@ void UShopComponent::LoadConfigShop()
 		}
 	}
 }
+
+bool UShopComponent::BuyOtherShopProp(FName shopName,FName propNumber,int number)
+{
+	if(!ShopInstanceSubsystem)
+	{
+		return false;
+	}
+
+	UBaseShop* shop = ShopInstanceSubsystem->GetShop(shopName);
+	if(!shop)
+	{
+		return false;
+	}
+
+	if(shop->SellProp(propNumber,number))
+	{
+		
+		return true;
+	}
+
+	return false;
+}
+
+bool UShopComponent::SellMyShopProp(FName propName,int number)
+{
+	
+}

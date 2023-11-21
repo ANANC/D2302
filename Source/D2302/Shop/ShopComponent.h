@@ -8,7 +8,7 @@
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class D2302_API UShopComponent : public UActorComponent
+class  UShopComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
@@ -32,7 +32,11 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	void BuyShopProp(FName propNumber,int number);
+	UFUNCTION(BlueprintCallable)
+	bool BuyOtherShopProp(FName shopName,FName propNumber,int number);
+
+	UFUNCTION(BlueprintCallable)
+	bool SellMyShopProp(FName propName,int number);
 	
 protected:
 	void LoadConfigShop();
