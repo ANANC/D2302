@@ -13,6 +13,16 @@ FName UBaseShop::GetShopName()
 	return ShopName;
 }
 
+void UBaseShop::SetMaster(class UGameBaseCharacter* character)
+{
+	Master = character;
+}
+
+class UGameBaseCharacter* UBaseShop::GetMaster()
+{
+	return Master;
+}
+
 void UBaseShop::InitShopByTableConfig()
 {
 	for(TMap<FName,FShopPropTableConfigData>::TConstIterator iter = ShopPropConfigs;iter;++iter)
@@ -58,7 +68,7 @@ void UBaseShop::RemoveProp(FName propName,int number)
 	ShopPropNumberUpdateDelegate.Broadcast(ShopName,propName,shopProp->CurNumber,shopProp->Price);
 }
 
-bool UBaseShop::SellPropCost(FName propName,int number,int& cost)
+bool UBaseShop::CalculateSellPropCost(FName propName,int number,int& cost)
 {
 	UBaseShopProp* shopProp = GetShopProp(propName);
 	if(!shopProp)

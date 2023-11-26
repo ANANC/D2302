@@ -6,8 +6,10 @@
 #include "ShopInstanceSubsystem.h"
 #include "D2302/Ability/GameAbilitySystemComponent.h"
 #include "D2302/Ability/AttributeSet/TradeAttributeSet.h"
+#include "D2302/Backpack/BackpackComponent.h"
 #include "D2302/Character/GameBaseCharacter.h"
 #include "D2302/Common/GameCommonFunctionLibrary.h"
+#include "D2302/Property/PropertyComponent.h"
 
 
 // Sets default values for this component's properties
@@ -39,6 +41,8 @@ void UShopComponent::LoadConfigShop()
 			UBaseShop* shop = ShopInstanceSubsystem->GetShop(ShopNames[index]);
 			if(shop)
 			{
+				shop->SetMaster(Character);
+				
 				Shops.Add(shop);
 			}
 		}
@@ -59,14 +63,21 @@ bool UShopComponent::BuyOtherShopProp(FName shopName,FName propNumber,int number
 	}
 
 	int cost;
-	if(shop->SellPropCost(propNumber,number,cost))
+	if(shop->CalculateSellPropCost(propNumber,number,cost))
 	{
-		int curMoney = Character->GetAbilitySystemComponent()->GetNumericAttribute(UTradeAttributeSet::GetMoneyAttribute());
-		if(curMoney >= cost)
+		UPropertyComponent* propertyComponent = Character->GetPropertyComponent();
+		if(propertyComponent->GetPropertyValueEqualorGreaterthanTargetValue(UPropertyComponent::Money,cost))
 		{
-			
+			if(propertyComponent->TransferMyValueToAnotherCharacter(shop->GetMaster(),UPropertyComponent::Money,cost))
+			{
+				shop->SellProp(propNumber,number);
+
+				UBackpackComponent* backpackComponent = Character->GetBackpackComponent();
+				backpackComponent->AddPorp(propNumber,number);
+				
+				return true;
+			}
 		}
-		return true;
 	}
 
 	return false;

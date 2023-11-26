@@ -68,6 +68,7 @@ class UBaseShop : public UObject
 	GENERATED_BODY()
 
 public:
+
 	UPROPERTY(BlueprintAssignable)
 	FShopPropNumberUpdateDelegate ShopPropNumberUpdateDelegate;
 	
@@ -83,6 +84,9 @@ public:
 protected:
 	FName ShopName;
 
+	UPROPERTY(BlueprintReadOnly)
+	class UGameBaseCharacter* Master;
+	
 	bool IsSetup{true};
 	
 	UPROPERTY()
@@ -95,6 +99,10 @@ public:
 
 	FName GetShopName();
 
+	void SetMaster(class UGameBaseCharacter* character);
+
+	class UGameBaseCharacter* GetMaster();
+
 	void InitShopByTableConfig();
 	
 	void AddProp(FName propName,int number,int price);
@@ -102,7 +110,7 @@ public:
 	void RemoveProp(FName propName,int number);
 
 	UFUNCTION(BlueprintPure)
-	bool SellPropCost(FName propName,int number,int& cost);
+	bool CalculateSellPropCost(FName propName,int number,int& cost);
 	
 	bool SellProp(FName propName,int number);
 

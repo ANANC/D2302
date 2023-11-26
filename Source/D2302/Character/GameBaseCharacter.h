@@ -13,12 +13,12 @@ class UGameAbilitySystemComponent;
 class UBackpackComponent;
 class UShopComponent;
 class UWorkmanshipComponent;
-
+class UPropertyComponent;
 /**
  * 
  */
 UCLASS()
-class D2302_API UGameBaseCharacter : public AModularCharacter,public IAbilitySystemInterface
+class D2302_API UGameBaseCharacter : public AModularCharacter//,public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -27,12 +27,12 @@ public:
 
 	UGameBaseCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 	
-	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	//virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 protected:
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly)
-	UGameAbilitySystemComponent* AbilitySystemComponent;
+	//UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	//UGameAbilitySystemComponent* AbilitySystemComponent;
 	
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	UBackpackComponent* BackpackComponent;
@@ -42,14 +42,18 @@ protected:
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	UWorkmanshipComponent* WorkmanshipComponent;
-
+	
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	UPropertyComponent* PropertyComponent;
 public:
 	
-	UGameAbilitySystemComponent* GetAbilitySystemComponent();
+	//UGameAbilitySystemComponent* GetAbilitySystemComponent();
 	
 	UBackpackComponent* GetBackpackComponent();
 
 	UShopComponent* GetShopComponent();
 
 	UWorkmanshipComponent* GetWorkmanshipComponent();
+	
+	UPropertyComponent* GetPropertyComponent();
 };

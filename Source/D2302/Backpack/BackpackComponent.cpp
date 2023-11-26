@@ -36,6 +36,7 @@ bool UBackpackComponent::AddPorp(FName propName,int propNumber,int cellIndex)
 		}
 	}
 
+	int oldNumber = cell? cell->PropNumber:0;
 	if(!cell)
 	{
 		cell = CreateCellAtFirstUnValidCell();
@@ -51,6 +52,14 @@ bool UBackpackComponent::AddPorp(FName propName,int propNumber,int cellIndex)
 	}
 
 	cell->AddPropNumber(propNumber);
+
+	int curNumber = cell->PropNumber;
+
+	if(oldNumber!=curNumber)
+	{
+		BackpackItemNumberChangeDelegate.Broadcast(propName,oldNumber,curNumber);
+	}
+	
 	return true;
 }
 
@@ -79,7 +88,9 @@ bool UBackpackComponent::RemoveProp(FName propName,int propNumber,int cellIndex)
 	{
 		return false;
 	}
-
+	
+	int oldNumber = cell? cell->PropNumber:0;
+	
 	cell->RemovePropNumber(propNumber);
 	
 	if(cell->PropNumber == 0)
@@ -91,6 +102,13 @@ bool UBackpackComponent::RemoveProp(FName propName,int propNumber,int cellIndex)
 		Prop2Cell.Remove(propName);
 	}
 
+	int curNumber = cell->PropNumber;
+	
+	if(oldNumber!=curNumber)
+	{
+		BackpackItemNumberChangeDelegate.Broadcast(propName,oldNumber,curNumber);
+	}
+	
 	return true;
 }
 

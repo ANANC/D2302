@@ -7,6 +7,8 @@
 #include "BackpackComponent.generated.h"
 
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FBackpackItemNumberChangeDelegate,FName,itemName,int,oldNumber,int,newNumber);
+
 UCLASS(BlueprintType)
 class UBackpackCell:public UObject
 {
@@ -45,6 +47,9 @@ public:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	int MaxCellNumber{100};
+
+	UPROPERTY(BlueprintAssignable)
+	FBackpackItemNumberChangeDelegate BackpackItemNumberChangeDelegate;
 	
 protected:
 	// Called when the game starts
@@ -75,6 +80,7 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	bool IsBackpackFull();
+	
 protected:
 
 	UBackpackCell* CreateCellAtFirstUnValidCell();
