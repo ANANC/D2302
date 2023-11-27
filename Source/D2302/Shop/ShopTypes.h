@@ -62,7 +62,7 @@ public:
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FShopPropNumberUpdateDelegate,FName,shopName,FName,propName,int,number,int,price);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FShopSellPropDelegate,FName,shopName,FName,propName,int,number,int,price);
 
-UCLASS()
+UCLASS(BlueprintType)
 class UBaseShop : public UObject
 {
 	GENERATED_BODY()
@@ -85,7 +85,7 @@ protected:
 	FName ShopName;
 
 	UPROPERTY(BlueprintReadOnly)
-	class UGameBaseCharacter* Master;
+	class AGameBaseCharacter* Master;
 	
 	bool IsSetup{true};
 	
@@ -95,13 +95,16 @@ protected:
 	int Grade;
 
 public:
+	
 	void SetShopName(FName shopName);
-
+	
+	UFUNCTION(BlueprintPure)
 	FName GetShopName();
 
-	void SetMaster(class UGameBaseCharacter* character);
-
-	class UGameBaseCharacter* GetMaster();
+	void SetMaster(class AGameBaseCharacter* character);
+	
+	UFUNCTION(BlueprintPure)
+	class AGameBaseCharacter* GetMaster();
 
 	void InitShopByTableConfig();
 	
@@ -113,7 +116,8 @@ public:
 	bool CalculateSellPropCost(FName propName,int number,int& cost);
 	
 	bool SellProp(FName propName,int number);
-
+	
+	UFUNCTION(BlueprintPure)
 	int GetPropNumber(FName propName);
 
 protected:

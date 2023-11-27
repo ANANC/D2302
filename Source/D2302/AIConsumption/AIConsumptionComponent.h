@@ -7,6 +7,8 @@
 #include "AIConsumptionTypes.h"
 #include "AIConsumptionComponent.generated.h"
 
+class UDataTable;
+
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class D2302_API UAIConsumptionComponent : public UActorComponent
 {
@@ -41,8 +43,10 @@ protected:
 	FName ConsumptionDesire;
 	
 public:
-
-	UPROPERTY()
+	UFUNCTION(BlueprintCallable)
+	void Consumption(FName shopName);
+	
+	UFUNCTION(BlueprintPure)
 	FShoppingList GetDesireShopShoppingList(FName shopName);
 
 	bool GetAIConsumptionDesireTableConfigData(FName consumptionDesire,FAIConsumptionDesireTableConfigData& config);

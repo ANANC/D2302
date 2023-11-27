@@ -96,7 +96,7 @@ void UPropertyComponent::PropertySubtractValue(FName propertyName,int subtract)
 	}
 }
 
-bool UPropertyComponent::TransferMyValueToAnotherCharacter(class UGameBaseCharacter* otherCharacter,FName propertyName,int value)
+bool UPropertyComponent::TransferMyValueToAnotherCharacter(class AGameBaseCharacter* otherCharacter,FName propertyName,int value)
 {
 	if(!otherCharacter)
 	{

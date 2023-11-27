@@ -4,8 +4,6 @@
 #include "ShopComponent.h"
 
 #include "ShopInstanceSubsystem.h"
-#include "D2302/Ability/GameAbilitySystemComponent.h"
-#include "D2302/Ability/AttributeSet/TradeAttributeSet.h"
 #include "D2302/Backpack/BackpackComponent.h"
 #include "D2302/Character/GameBaseCharacter.h"
 #include "D2302/Common/GameCommonFunctionLibrary.h"
@@ -26,7 +24,7 @@ void UShopComponent::BeginPlay()
 
 	ShopInstanceSubsystem = UGameCommonFunctionLibrary::GetShopInstanceSubsystem();
 
-	Character = Cast<UGameBaseCharacter>(GetOwner());
+	Character = Cast<AGameBaseCharacter>(GetOwner());
 	
 	LoadConfigShop();
 }
@@ -66,9 +64,9 @@ bool UShopComponent::BuyOtherShopProp(FName shopName,FName propNumber,int number
 	if(shop->CalculateSellPropCost(propNumber,number,cost))
 	{
 		UPropertyComponent* propertyComponent = Character->GetPropertyComponent();
-		if(propertyComponent->GetPropertyValueEqualorGreaterthanTargetValue(UPropertyComponent::Money,cost))
+		if(propertyComponent->GetPropertyValueEqualorGreaterthanTargetValue(PropertyName::Money,cost))
 		{
-			if(propertyComponent->TransferMyValueToAnotherCharacter(shop->GetMaster(),UPropertyComponent::Money,cost))
+			if(propertyComponent->TransferMyValueToAnotherCharacter(shop->GetMaster(),PropertyName::Money,cost))
 			{
 				shop->SellProp(propNumber,number);
 
@@ -83,7 +81,3 @@ bool UShopComponent::BuyOtherShopProp(FName shopName,FName propNumber,int number
 	return false;
 }
 
-bool UShopComponent::SellMyShopProp(FName propName,int number)
-{
-	
-}

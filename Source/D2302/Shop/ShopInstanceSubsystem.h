@@ -28,10 +28,13 @@ protected:
 	TArray<UBaseShop*> ValidShops;
 
 public:
+	UFUNCTION(BlueprintPure)
 	UBaseShop* GetShop(FName shopName);
-
+	
+	UFUNCTION(BlueprintPure)
 	bool GetShopConfigTableInfo(FName shopName,FShopTableConfigData& config);
-
+	
+	UFUNCTION(BlueprintPure)
 	bool GetShopPropConfigTableInfo(FName shopPropName,FShopPropTableConfigData& config);
 protected:
 	UBaseShop* CreateShop(FName shopName);

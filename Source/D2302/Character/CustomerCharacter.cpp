@@ -7,7 +7,7 @@
 
 
 // Sets default values
-UCustomerCharacter::UCustomerCharacter()
+ACustomerCharacter::ACustomerCharacter()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
@@ -17,16 +17,16 @@ UCustomerCharacter::UCustomerCharacter()
 }
 
 // Called when the game starts or when spawned
-void UCustomerCharacter::BeginPlay()
+void ACustomerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
 // Called every frame
-void UCustomerCharacter::Tick(float DeltaTime)
+void ACustomerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-UAIConsumptionComponent* UCustomerCharacter::GetAIConsumptionComponent(){return AIConsumptionComponent;}
+UAIConsumptionComponent* ACustomerCharacter::GetAIConsumptionComponent(){return AIConsumptionComponent;}

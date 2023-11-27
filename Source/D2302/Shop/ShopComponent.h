@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "D2302/AIConsumption/AIConsumptionTypes.h"
 #include "ShopComponent.generated.h"
 
 
@@ -25,7 +26,7 @@ protected:
 	class UShopInstanceSubsystem* ShopInstanceSubsystem;
 
 	UPROPERTY()
-	class UGameBaseCharacter* Character;
+	class AGameBaseCharacter* Character;
 	
 	UPROPERTY()
 	TArray<class UBaseShop*> Shops;
@@ -38,8 +39,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool BuyOtherShopProp(FName shopName,FName propNumber,int number);
 
-	UFUNCTION(BlueprintCallable)
-	bool SellMyShopProp(FName propName,int number);
 	
 protected:
 	void LoadConfigShop();

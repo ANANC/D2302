@@ -8,14 +8,14 @@
 
 class UAIConsumptionComponent;
 
-UCLASS()
-class D2302_API UCustomerCharacter : public UGameBaseCharacter
+UCLASS(Blueprintable,BlueprintType)
+class ACustomerCharacter : public AGameBaseCharacter
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	UCustomerCharacter();
+	ACustomerCharacter();
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,7 +27,7 @@ public:
 
 protected:
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	UAIConsumptionComponent* AIConsumptionComponent;
 
 public:

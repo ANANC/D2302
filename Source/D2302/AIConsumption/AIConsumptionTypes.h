@@ -15,18 +15,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	bool HasConsumptionLimit;
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,meta=(ClampMin = 0,UIMin = 0,ClampMax =1,UIMax = 1))
-	float ItemTypeProportion;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,meta=(ClampMin = 0,UIMin = 0,ClampMax =1,UIMax = 1))
-	float ItemNumberProportion;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite,meta=(ClampMin = 0,UIMin = 0,ClampMax =1,UIMax = 1))
-	float ItemMoneyProportion;
-	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	FVector2D BuyItemTypeRange;
-	
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	FVector2D BuyItemNumberRange;
 	
@@ -47,30 +38,34 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly,meta=(ClampMin = 0,UIMin = 0,ClampMax =1,UIMax = 1))
 	float Desire{1};
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly,meta=(ClampMin = 0,UIMin = 0,ClampMax =1,UIMax = 1))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	bool HasSingleBuyLimit{true};
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly,meta=(ClampMin = 0,UIMin = 0,ClampMax =1,UIMax = 1))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	int MaxSingleBuyNumber{2};
 };
 
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FShoppingItem
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 public:
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FName PropName;
 	
-	UPROPERTY(BlueprintReadWrite)
-	int Number;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	int Number{0};
 };
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FShoppingList
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FName ShopName;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TArray<FShoppingItem> ShoppingItems;
 };

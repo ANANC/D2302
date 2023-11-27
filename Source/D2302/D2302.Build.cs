@@ -12,7 +12,5 @@ public class D2302 : ModuleRules
 		
 		PublicDependencyModuleNames.AddRange(new string[] { "GameplayAbilities","GameplayTags","GameplayTasks" });
 		
-		PublicDependencyModuleNames.AddRange(new string[] { "ModularGameplayActors" });
-
 	}
 }

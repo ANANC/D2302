@@ -9,6 +9,11 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FPropertyChangeDelegate,FName,property,int,oldValue,int,newValue);
 
+namespace PropertyName
+{
+	FName Money = "Money";
+}
+
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class D2302_API UPropertyComponent : public UActorComponent
 {
@@ -23,8 +28,6 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	static const FName Money = "Money";
-
 	UPROPERTY(BlueprintAssignable)
 	FPropertyChangeDelegate PropertyChangeDelegate;
 	
@@ -56,5 +59,5 @@ public:
 	void PropertySubtractValue(FName propertyName,int subtract);
 	
 	UFUNCTION(BlueprintPure)
-	bool TransferMyValueToAnotherCharacter(class UGameBaseCharacter* otherCharacter,FName propertyName,int value);
+	bool TransferMyValueToAnotherCharacter(class AGameBaseCharacter* otherCharacter,FName propertyName,int value);
 };

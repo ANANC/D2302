@@ -41,7 +41,7 @@ protected:
 
 public:
 	UPROPERTY(EditAnywhere)
-	UDataTable* WorkmanshipTable;
+	UDataTable* WorkmanshipTable;	//FWorkmanshipTableConfigData
 	
 protected:
 	UPROPERTY(VisibleAnywhere)

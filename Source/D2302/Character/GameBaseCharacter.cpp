@@ -3,13 +3,12 @@
 
 #include "GameBaseCharacter.h"
 
-#include "D2302/Ability/GameAbilitySystemComponent.h"
 #include "D2302/Backpack/BackpackComponent.h"
 #include "D2302/Property/PropertyComponent.h"
 #include "D2302/Shop/ShopComponent.h"
 #include "D2302/Workmanship/WorkmanshipComponent.h"
 
-UGameBaseCharacter::UGameBaseCharacter(const FObjectInitializer& ObjectInitializer)
+AGameBaseCharacter::AGameBaseCharacter(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
 {
 	//AbilitySystemComponent = CreateDefaultSubobject<UGameAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
@@ -20,12 +19,12 @@ UGameBaseCharacter::UGameBaseCharacter(const FObjectInitializer& ObjectInitializ
 	
 }
 
-//UGameAbilitySystemComponent* UGameBaseCharacter::GetAbilitySystemComponent(){return AbilitySystemComponent;}
+//UGameAbilitySystemComponent* AGameBaseCharacter::GetAbilitySystemComponent(){return AbilitySystemComponent;}
 	
-UBackpackComponent* UGameBaseCharacter::GetBackpackComponent(){return BackpackComponent;}
+UBackpackComponent* AGameBaseCharacter::GetBackpackComponent(){return BackpackComponent;}
 
-UShopComponent* UGameBaseCharacter::GetShopComponent(){return ShopComponent;}
+UShopComponent* AGameBaseCharacter::GetShopComponent(){return ShopComponent;}
 
-UWorkmanshipComponent* UGameBaseCharacter::GetWorkmanshipComponent(){return WorkmanshipComponent;}
+UWorkmanshipComponent* AGameBaseCharacter::GetWorkmanshipComponent(){return WorkmanshipComponent;}
 
-UPropertyComponent* UGameBaseCharacter::GetPropertyComponent(){return PropertyComponent;}
+UPropertyComponent* AGameBaseCharacter::GetPropertyComponent(){return PropertyComponent;}

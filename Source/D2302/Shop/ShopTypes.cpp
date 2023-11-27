@@ -13,12 +13,12 @@ FName UBaseShop::GetShopName()
 	return ShopName;
 }
 
-void UBaseShop::SetMaster(class UGameBaseCharacter* character)
+void UBaseShop::SetMaster(class AGameBaseCharacter* character)
 {
 	Master = character;
 }
 
-class UGameBaseCharacter* UBaseShop::GetMaster()
+class AGameBaseCharacter* UBaseShop::GetMaster()
 {
 	return Master;
 }
@@ -99,6 +99,8 @@ bool UBaseShop::SellProp(FName propName,int number)
 
 	int sellPrice = shopProp->Price * number;
 	ShopSellPropDelegate.Broadcast(ShopName,propName,shopProp->CurNumber,sellPrice);
+
+	return true;
 }
 
 int UBaseShop::GetPropNumber(FName propName)

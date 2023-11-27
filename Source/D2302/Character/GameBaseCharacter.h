@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ModularCharacter.h"
 #include "UObject/Object.h"
 #include "AbilitySystemInterface.h"
+#include "GameFramework/Character.h"
 #include "GameBaseCharacter.generated.h"
 
 class UAbilitySystemComponent;
@@ -17,15 +17,15 @@ class UPropertyComponent;
 /**
  * 
  */
-UCLASS()
-class D2302_API UGameBaseCharacter : public AModularCharacter//,public IAbilitySystemInterface
+UCLASS(Blueprintable,BlueprintType)
+class AGameBaseCharacter : public ACharacter//,public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 	
 public:
 
-	UGameBaseCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	AGameBaseCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 	
 	//virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 

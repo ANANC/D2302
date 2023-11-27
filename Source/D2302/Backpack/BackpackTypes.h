@@ -17,4 +17,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FName TitleName;
 	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UStaticMesh* StataMesh;
 };
