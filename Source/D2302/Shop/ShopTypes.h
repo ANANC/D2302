@@ -51,10 +51,13 @@ class UBaseShopProp : public UObject
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(BlueprintReadOnly)
 	FName PropName;
-
+	
+	UPROPERTY(BlueprintReadOnly)
 	int Price;
-
+	
+	UPROPERTY(BlueprintReadOnly)
 	int CurNumber;
 };
 
@@ -89,9 +92,10 @@ protected:
 	
 	bool IsSetup{true};
 	
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	TArray<UBaseShopProp*> ShopProps;
-
+	
+	UPROPERTY(BlueprintReadOnly)
 	int Grade;
 
 public:

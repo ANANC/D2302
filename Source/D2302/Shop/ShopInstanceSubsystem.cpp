@@ -16,14 +16,26 @@ void UShopInstanceSubsystem::Deinitialize()
 	
 }
 
+UBaseShop* UShopInstanceSubsystem::CreateShop(class AGameBaseCharacter* character,FName shopName)
+{
+	UBaseShop* shop = FindValidShop(shopName);
+	if(shop)
+	{
+		return shop;
+	}
+	
+	shop = CreateShop(shopName);
+	if(shop)
+	{
+		shop->SetMaster(character);
+	}
+
+	return shop;
+}
+
 UBaseShop* UShopInstanceSubsystem::GetShop(FName shopName)
 {
 	UBaseShop* shop = FindValidShop(shopName);
-	if(!shop)
-	{
-		shop = CreateShop(shopName);
-	}
-
 	return shop;
 }
 

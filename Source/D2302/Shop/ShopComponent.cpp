@@ -36,11 +36,9 @@ void UShopComponent::LoadConfigShop()
 	{
 		for(int index = 0;index<ShopNames.Num();++index)
 		{
-			UBaseShop* shop = ShopInstanceSubsystem->GetShop(ShopNames[index]);
+			UBaseShop* shop = ShopInstanceSubsystem->CreateShop(Character,ShopNames[index]);
 			if(shop)
 			{
-				shop->SetMaster(Character);
-				
 				Shops.Add(shop);
 			}
 		}

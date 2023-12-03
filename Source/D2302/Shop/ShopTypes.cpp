@@ -27,8 +27,8 @@ void UBaseShop::InitShopByTableConfig()
 {
 	for(TMap<FName,FShopPropTableConfigData>::TConstIterator iter = ShopPropConfigs;iter;++iter)
 	{
-		FName propName = iter.Key();
 		FShopPropTableConfigData config = iter.Value();
+		FName propName = config.PropName;
 
 		if(config.SellDefaultNumber>0)
 		{
@@ -42,9 +42,9 @@ void UBaseShop::AddProp(FName propName,int number,int price)
 	UBaseShopProp* shopProp = GetShopProp(propName);
 	if(!shopProp)
 	{
-		shopProp = NewObject<UBaseShopProp>();
+ 		shopProp = NewObject<UBaseShopProp>();
 		shopProp->PropName = propName;
-		shopProp->CurNumber = 0;
+ 		shopProp->CurNumber = 0;
 		shopProp->Price = price;
 
 		ShopProps.Add(shopProp);

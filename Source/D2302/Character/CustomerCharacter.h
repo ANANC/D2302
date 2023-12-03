@@ -15,7 +15,7 @@ class ACustomerCharacter : public AGameBaseCharacter
 
 public:
 	// Sets default values for this character's properties
-	ACustomerCharacter();
+	ACustomerCharacter(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 protected:
 	// Called when the game starts or when spawned

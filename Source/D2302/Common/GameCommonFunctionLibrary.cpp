@@ -4,17 +4,17 @@
 #include "GameCommonFunctionLibrary.h"
 
 #include "GameBaseInstance.h"
+#include "KismetTraceUtils.h"
 #include "Engine/GameEngine.h"
 #include "D2302/Shop/ShopInstanceSubsystem.H"
 
 UGameBaseInstance* UGameCommonFunctionLibrary::GetGameBaseInstance()
 {
 	UGameBaseInstance* GameInstance = nullptr;
-
-	UGameEngine* engine = Cast<UGameEngine>(GEngine);
-	if (engine)
+	
+	if (GWorld && GWorld->GetWorld())
 	{
-		UGameInstance* instance = engine->GameInstance;
+		UGameInstance* instance = GWorld->GetWorld()->GetGameInstance();
 		if(instance)
 		{
 			GameInstance = Cast<UGameBaseInstance>(instance);
@@ -30,6 +30,16 @@ UShopInstanceSubsystem* UGameCommonFunctionLibrary::GetShopInstanceSubsystem()
 	if(instance)
 	{
 		return instance->GetSubsystem<UShopInstanceSubsystem>();
+	}
+	return nullptr;
+}
+
+UPropInstanceSubsystem* UGameCommonFunctionLibrary::GetPropInstanceSubsystem()
+{
+	UGameBaseInstance* instance = GetGameBaseInstance();
+	if(instance)
+	{
+		return instance->GetSubsystem<UPropInstanceSubsystem>();
 	}
 	return nullptr;
 }

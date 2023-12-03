@@ -29,6 +29,9 @@ protected:
 
 public:
 	UFUNCTION(BlueprintPure)
+	UBaseShop* CreateShop(class AGameBaseCharacter* character,FName shopName);
+	
+	UFUNCTION(BlueprintPure)
 	UBaseShop* GetShop(FName shopName);
 	
 	UFUNCTION(BlueprintPure)

@@ -23,4 +23,7 @@ public:
 	
 	UFUNCTION(BlueprintPure)
 	static UShopInstanceSubsystem* GetShopInstanceSubsystem();
+
+	UFUNCTION(BlueprintPure)
+	static UPropInstanceSubsystem* GetPropInstanceSubsystem();
 };
